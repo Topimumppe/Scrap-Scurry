@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://mdm6s6uv2orj"]
+
+[ext_resource type="Texture2D" uid="uid://bv363tb8qwuer" path="res://assets/testihahmo.png" id="1_x1de0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48xg8"]
+atlas = ExtResource("1_x1de0")
+region = Rect2(0, 0, 2000, 900)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4afgd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48xg8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6dkvm"]
+size = Vector2(171, 90)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(220, -152.5)
+scale = Vector2(0.21825, 0.334444)
+sprite_frames = SubResource("SpriteFrames_4afgd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(194, -98)
+shape = SubResource("RectangleShape2D_6dkvm")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd1v0mauxunbq"]
+
+[ext_resource type="PackedScene" uid="uid://mdm6s6uv2orj" path="res://scenes/Scurry.tscn" id="1_y56yb"]
+[ext_resource type="Script" path="res://scenes/Scurry.cs" id="2_b1sfe"]
+
+[node name="Game" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_y56yb")]
+position = Vector2(70, 34)
+script = ExtResource("2_b1sfe")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(250, -75)
