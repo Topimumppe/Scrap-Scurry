@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv363tb8qwuer"
-path="res://.godot/imported/testihahmo.png-860148d33147428b2b8ce545aaa6043b.ctex"
+uid="uid://cp8ljlih2nf7d"
+path="res://.godot/imported/scrubby_front3.png-fbf6a089324c640d29ae96b2833000d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/testihahmo.png"
-dest_files=["res://.godot/imported/testihahmo.png-860148d33147428b2b8ce545aaa6043b.ctex"]
+source_file="res://assets/scrubby_front3.png"
+dest_files=["res://.godot/imported/scrubby_front3.png-fbf6a089324c640d29ae96b2833000d0.ctex"]
 
 [params]
 

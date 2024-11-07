@@ -6,8 +6,9 @@
 [node name="Game" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_y56yb")]
-position = Vector2(70, 34)
+position = Vector2(40, -27)
 script = ExtResource("2_b1sfe")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(250, -75)
+position = Vector2(82, -46)
+zoom = Vector2(7.065, 7.065)
