@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://iavkf4ftwpoo"
-path="res://.godot/imported/tileset.png-c50288acd069fa293d7940a084811264.ctex"
+uid="uid://cp8ljlih2nf7d"
+path="res://.godot/imported/scrubby_front3.png-4ac436178b2e060889dca46be2e6c7f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tileset.png"
-dest_files=["res://.godot/imported/tileset.png-c50288acd069fa293d7940a084811264.ctex"]
+source_file="res://assets/player/scrubby_front3.png"
+dest_files=["res://.godot/imported/scrubby_front3.png-4ac436178b2e060889dca46be2e6c7f8.ctex"]
 
 [params]
 

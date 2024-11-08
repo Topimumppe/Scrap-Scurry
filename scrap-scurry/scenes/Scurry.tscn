@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://mdm6s6uv2orj"]
 
 [ext_resource type="Texture2D" uid="uid://cu0k64stb2q87" path="res://assets/scrubby_front.png" id="1_p4g3f"]
-[ext_resource type="Texture2D" uid="uid://bnrdpa58cxrxt" path="res://assets/scrubby_front2.png" id="2_g566r"]
-[ext_resource type="Texture2D" uid="uid://cp8ljlih2nf7d" path="res://assets/scrubby_front3.png" id="3_s6mw8"]
+[ext_resource type="Texture2D" uid="uid://bnrdpa58cxrxt" path="res://assets/player/scrubby_front2.png" id="2_g566r"]
+[ext_resource type="Texture2D" uid="uid://cp8ljlih2nf7d" path="res://assets/player/scrubby_front3.png" id="3_s6mw8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vd7rc"]
 atlas = ExtResource("1_p4g3f")

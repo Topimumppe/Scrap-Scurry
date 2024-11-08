@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://erkic8ewj16m"
-path="res://.godot/imported/scrubby_front1.png-12f331c88ad6b8842f62124846257ba7.ctex"
+path="res://.godot/imported/scrubby_front1.png-d0f9b02f3185351a2d18775f6864e916.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/scrubby_front1.png"
-dest_files=["res://.godot/imported/scrubby_front1.png-12f331c88ad6b8842f62124846257ba7.ctex"]
+source_file="res://assets/player/scrubby_front1.png"
+dest_files=["res://.godot/imported/scrubby_front1.png-d0f9b02f3185351a2d18775f6864e916.ctex"]
 
 [params]
 

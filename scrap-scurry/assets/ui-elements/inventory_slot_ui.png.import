@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp8ljlih2nf7d"
-path="res://.godot/imported/scrubby_front3.png-fbf6a089324c640d29ae96b2833000d0.ctex"
+uid="uid://ct5mey7yp7ujn"
+path="res://.godot/imported/inventory_slot_ui.png-e061c613d583c9d223098a702a67c83f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/scrubby_front3.png"
-dest_files=["res://.godot/imported/scrubby_front3.png-fbf6a089324c640d29ae96b2833000d0.ctex"]
+source_file="res://assets/ui-elements/inventory_slot_ui.png"
+dest_files=["res://.godot/imported/inventory_slot_ui.png-e061c613d583c9d223098a702a67c83f.ctex"]
 
 [params]
 
