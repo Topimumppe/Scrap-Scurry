@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://baprlaastry2m"]
+
+[ext_resource type="Script" path="res://scripts/Inventory.cs" id="1_a2r66"]
+[ext_resource type="Texture2D" uid="uid://cgxwkggevx66p" path="res://assets/ui-elements/inventory_ui.png" id="2_8hykx"]
+[ext_resource type="PackedScene" uid="uid://jpem2dv2r36c" path="res://UI/inventory_Button.tscn" id="3_xf1p2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vxp5g"]
+radius = 2.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3bqc"]
+size = Vector2(12, 12)
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+script = ExtResource("1_a2r66")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 58.0
+offset_bottom = 58.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CenterContainer"]
+position = Vector2(26, 26)
+texture = ExtResource("2_8hykx")
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 3
+
+[node name="AddButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 33.0
+offset_right = 105.0
+offset_bottom = 64.0
+text = "Add"
+
+[node name="DeleteButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 66.0
+offset_right = 105.0
+offset_bottom = 31.0
+text = "Del"
+
+[node name="MouseArea2D" type="Area2D" parent="."]
+position = Vector2(44, -22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea2D"]
+shape = SubResource("CircleShape2D_vxp5g")
+
+[node name="InventoryButton" parent="MouseArea2D" instance=ExtResource("3_xf1p2")]
+visible = false
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="Trash" type="Button" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 67.0
+offset_right = 64.0
+offset_bottom = 83.0
+
+[node name="TrashArea2D" type="Area2D" parent="Trash"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trash/TrashArea2D"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_c3bqc")
+
+[connection signal="button_down" from="AddButton" to="." method="_on_add_button_button_down"]
+[connection signal="button_down" from="DeleteButton" to="." method="_on_delete_button_button_down"]
+[connection signal="area_entered" from="MouseArea2D" to="." method="_on_mouse_area_2d_area_entered"]
+[connection signal="area_exited" from="MouseArea2D" to="." method="_on_mouse_area_2d_area_exited"]
+[connection signal="area_entered" from="Trash/TrashArea2D" to="." method="_on_trash_area_2d_area_entered"]
+[connection signal="area_exited" from="Trash/TrashArea2D" to="." method="_on_trash_area_2d_area_exited"]

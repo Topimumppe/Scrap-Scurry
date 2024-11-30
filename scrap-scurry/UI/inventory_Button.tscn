@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://jpem2dv2r36c"]
+
+[ext_resource type="Script" path="res://scripts/InventoryButton.cs" id="1_3bt2h"]
+[ext_resource type="Texture2D" uid="uid://ct5mey7yp7ujn" path="res://assets/ui-elements/inventory_slot_ui.png" id="2_sy8j6"]
+
+[sub_resource type="FontFile" id="FontFile_o1r80"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/11/0/ascent = 0.0
+cache/0/11/0/descent = 0.0
+cache/0/11/0/underline_position = 0.0
+cache/0/11/0/underline_thickness = 0.0
+cache/0/11/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_k81j7"]
+font = SubResource("FontFile_o1r80")
+font_size = 11
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6u6m"]
+size = Vector2(12, 12)
+
+[node name="InventoryButton" type="Button"]
+custom_minimum_size = Vector2(16, 16)
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_3bt2h")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 14.0
+offset_bottom = 14.0
+texture = ExtResource("2_sy8j6")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+label_settings = SubResource("LabelSettings_k81j7")
+horizontal_alignment = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_p6u6m")

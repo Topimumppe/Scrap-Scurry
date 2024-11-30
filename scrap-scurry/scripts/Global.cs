@@ -3,7 +3,7 @@ using System;
 
 public partial class Global : Node
 {
-	private Node inventory_screen = ResourceLoader.Load<PackedScene>("res://scenes/inventory_screen.tscn").Instantiate();
+	Node inventory = ResourceLoader.Load<PackedScene>("res://scenes/inventory.tscn").Instantiate();
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -25,7 +25,7 @@ public partial class Global : Node
 	{
 		if (!is_inventory_open)
 		{
-			GetTree().Root.AddChild(inventory_screen);
+			GetTree().Root.AddChild(inventory);
 			is_inventory_open = true;
 		}
 	}
@@ -34,7 +34,7 @@ public partial class Global : Node
 	{
 		if (is_inventory_open)
 		{
-			GetTree().Root.RemoveChild(inventory_screen);
+			GetTree().Root.RemoveChild(inventory);
 			is_inventory_open = false;
 		}
 	}
@@ -50,4 +50,6 @@ public partial class Global : Node
 			CloseInventory();
 		}
 	}
+
+
 }
