@@ -5,10 +5,10 @@
 
 [resource]
 script = ExtResource("2_s22rn")
-ID = 0
+ID = 1
 Name = "TestItem"
 ResourcePath = ""
 Icon = ExtResource("1_mdt5q")
-Quantity = 2
+Quantity = 3
 StackSize = 5
 IsStackable = true

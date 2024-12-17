@@ -1,0 +1,40 @@
+Item currentItem = item.Copy(); // kopio
+		for (int i = 0; i < items.Count; i++)
+		{
+			if (items[i] == null)
+			{
+				continue;
+			}
+			if (items[i].ID == currentItem.ID && items[i].Quantity < items[i].StackSize) //jos itemin stackSize ei ole täynnä
+			{
+				if (items[i].Quantity + currentItem.Quantity > items[i].StackSize) //jos itemin stackSize menee yli lisätessä
+				{
+					currentItem.Quantity = GetExcess(items[i].StackSize, currentItem.Quantity); // tallenna kopioon itemin ylijäämä
+					items[i].Quantity = currentItem.StackSize;
+					UpdateItem(items[i], i);
+				}
+				else //jos itemin stacSize ei mene yli
+				{
+					items[i].Quantity += currentItem.Quantity; // lisää itemin stakkiin määrä
+					currentItem.Quantity = 0;
+					UpdateItem(items[i], i);
+				}
+			}
+		}
+		if (currentItem.Quantity > 0) //itemin ylijäämä
+		{
+			if (currentItem.Quantity <= currentItem.StackSize) //jos itemin ylijäämä on vähemmän kuin stackSize
+			{
+				AddItemToList(currentItem); // lisää ylijäämä seuraavaan slottiin
+				UpdateItem(currentItem, GetNextEmptySlot());
+			}
+			else // jos itemin ylijäämä on enemmän kuin stackSize
+			{
+				Item tempItem = currentItem.Copy();
+				tempItem.Quantity = currentItem.StackSize;
+				AddItemToList(tempItem);
+				UpdateItem(tempItem, GetNextEmptySlot());
+				currentItem.Quantity -= currentItem.StackSize;
+				Add(currentItem);
+			}
+		}

@@ -1,0 +1,370 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1r2rcefvnnfo"]
+
+[ext_resource type="Script" path="res://scripts/PlayerInventory.cs" id="1_62851"]
+[ext_resource type="Texture2D" uid="uid://cgxwkggevx66p" path="res://assets/ui-elements/inventory_ui.png" id="2_6d4et"]
+[ext_resource type="Texture2D" uid="uid://ct5mey7yp7ujn" path="res://assets/ui-elements/inventory_slot_ui.png" id="3_7bk74"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mq81g"]
+size = Vector2(42, 42)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jpuhx"]
+radius = 2.23607
+
+[node name="PlayerInventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 192.0
+offset_bottom = 192.0
+script = ExtResource("1_62851")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_6d4et")
+centered = false
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -78.0
+offset_right = 78.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 3
+
+[node name="Panel1" type="Panel" parent="GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="PanelTexture" type="TextureRect" parent="GridContainer/Panel1"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+texture = ExtResource("3_7bk74")
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Panel1"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Panel1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel1/Area2D"]
+position = Vector2(24, 24)
+shape = SubResource("RectangleShape2D_mq81g")
+
+[node name="Label" type="Label" parent="GridContainer/Panel1"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 22.0
+offset_right = 45.0
+offset_bottom = 45.0
+
+[node name="Panel2" type="Panel" parent="GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="PanelTexture" type="TextureRect" parent="GridContainer/Panel2"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+texture = ExtResource("3_7bk74")
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Panel2"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Panel2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel2/Area2D"]
+position = Vector2(24, 24)
+shape = SubResource("RectangleShape2D_mq81g")
+
+[node name="Label" type="Label" parent="GridContainer/Panel2"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 22.0
+offset_right = 45.0
+offset_bottom = 45.0
+
+[node name="Panel3" type="Panel" parent="GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="PanelTexture" type="TextureRect" parent="GridContainer/Panel3"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+texture = ExtResource("3_7bk74")
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Panel3"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Panel3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel3/Area2D"]
+position = Vector2(24, 24)
+shape = SubResource("RectangleShape2D_mq81g")
+
+[node name="Label" type="Label" parent="GridContainer/Panel3"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 22.0
+offset_right = 45.0
+offset_bottom = 45.0
+
+[node name="Panel4" type="Panel" parent="GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="PanelTexture" type="TextureRect" parent="GridContainer/Panel4"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+texture = ExtResource("3_7bk74")
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Panel4"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Panel4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel4/Area2D"]
+position = Vector2(24, 24)
+shape = SubResource("RectangleShape2D_mq81g")
+
+[node name="Label" type="Label" parent="GridContainer/Panel4"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 22.0
+offset_right = 45.0
+offset_bottom = 45.0
+
+[node name="Panel5" type="Panel" parent="GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="PanelTexture" type="TextureRect" parent="GridContainer/Panel5"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+texture = ExtResource("3_7bk74")
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Panel5"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Panel5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel5/Area2D"]
+position = Vector2(24, 24)
+shape = SubResource("RectangleShape2D_mq81g")
+
+[node name="Label" type="Label" parent="GridContainer/Panel5"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 22.0
+offset_right = 45.0
+offset_bottom = 45.0
+
+[node name="Panel6" type="Panel" parent="GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="PanelTexture" type="TextureRect" parent="GridContainer/Panel6"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+texture = ExtResource("3_7bk74")
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Panel6"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Panel6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel6/Area2D"]
+position = Vector2(24, 24)
+shape = SubResource("RectangleShape2D_mq81g")
+
+[node name="Label" type="Label" parent="GridContainer/Panel6"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 22.0
+offset_right = 45.0
+offset_bottom = 45.0
+
+[node name="Panel7" type="Panel" parent="GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="PanelTexture" type="TextureRect" parent="GridContainer/Panel7"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+texture = ExtResource("3_7bk74")
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Panel7"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Panel7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel7/Area2D"]
+position = Vector2(24, 24)
+shape = SubResource("RectangleShape2D_mq81g")
+
+[node name="Label" type="Label" parent="GridContainer/Panel7"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 22.0
+offset_right = 45.0
+offset_bottom = 45.0
+
+[node name="Panel8" type="Panel" parent="GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="PanelTexture" type="TextureRect" parent="GridContainer/Panel8"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+texture = ExtResource("3_7bk74")
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Panel8"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Panel8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel8/Area2D"]
+position = Vector2(24, 24)
+shape = SubResource("RectangleShape2D_mq81g")
+
+[node name="Label" type="Label" parent="GridContainer/Panel8"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 22.0
+offset_right = 45.0
+offset_bottom = 45.0
+
+[node name="Panel9" type="Panel" parent="GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="PanelTexture" type="TextureRect" parent="GridContainer/Panel9"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+texture = ExtResource("3_7bk74")
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Panel9"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Panel9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel9/Area2D"]
+position = Vector2(24, 24)
+shape = SubResource("RectangleShape2D_mq81g")
+
+[node name="Label" type="Label" parent="GridContainer/Panel9"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 22.0
+offset_right = 45.0
+offset_bottom = 45.0
+
+[node name="DeleteButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 82.0
+offset_right = 254.0
+offset_bottom = 113.0
+text = "Del
+"
+
+[node name="AddButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 42.0
+offset_right = 253.0
+offset_bottom = 73.0
+text = "Add"
+
+[node name="MouseArea2D" type="Area2D" parent="."]
+position = Vector2(368, 27)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea2D"]
+shape = SubResource("CircleShape2D_jpuhx")
+
+[node name="ExamplePanel" type="Panel" parent="MouseArea2D"]
+visible = false
+custom_minimum_size = Vector2(48, 48)
+offset_right = 48.0
+offset_bottom = 48.0
+
+[node name="PanelTexture" type="TextureRect" parent="MouseArea2D/ExamplePanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+texture = ExtResource("3_7bk74")
+
+[node name="TextureRect" type="TextureRect" parent="MouseArea2D/ExamplePanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+
+[node name="Area2D" type="Area2D" parent="MouseArea2D/ExamplePanel"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea2D/ExamplePanel/Area2D"]
+position = Vector2(24, 24)
+shape = SubResource("RectangleShape2D_mq81g")
+
+[node name="Label" type="Label" parent="MouseArea2D/ExamplePanel"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 22.0
+offset_right = 45.0
+offset_bottom = 45.0
+
+[connection signal="button_down" from="DeleteButton" to="." method="_on_delete_button_button_down"]
+[connection signal="button_down" from="AddButton" to="." method="_on_add_button_button_down"]
+[connection signal="area_entered" from="MouseArea2D" to="." method="_on_mouse_area_2d_area_entered"]
+[connection signal="area_exited" from="MouseArea2D" to="." method="_on_mouse_area_2d_area_exited"]
