@@ -1,40 +1,46 @@
-Item currentItem = item.Copy(); // kopio
+if (CheckForFullInventory())
+		{
+			GD.Print("Inventory is full");
+			return;
+		}
+
+		Item currentItem = item.Copy();
+		GD.Print("Adding " + currentItem.Quantity + " items of " + currentItem.ID);
 		for (int i = 0; i < items.Count; i++)
 		{
 			if (items[i] == null)
 			{
 				continue;
 			}
-			if (items[i].ID == currentItem.ID && items[i].Quantity < items[i].StackSize) //jos itemin stackSize ei ole täynnä
+			// if item is already in inventory
+			// and there is space
+			if (items[i].ID == currentItem.ID && items[i].Quantity < items[i].StackSize)
 			{
-				if (items[i].Quantity + currentItem.Quantity > items[i].StackSize) //jos itemin stackSize menee yli lisätessä
+				if (items[i].Quantity + currentItem.Quantity > items[i].StackSize)
 				{
-					currentItem.Quantity = GetExcess(items[i].StackSize, currentItem.Quantity); // tallenna kopioon itemin ylijäämä
-					items[i].Quantity = currentItem.StackSize;
-					UpdateItem(items[i], i);
+					int currentItemsSum = items[i].Quantity + currentItem.Quantity;
+					currentItem.Quantity = GetExcess(items[i].StackSize, currentItemsSum);
+					GD.Print("Currentitem quantity is " + currentItem.Quantity);
+					items[i].Quantity = items[i].StackSize;
+					break;
 				}
-				else //jos itemin stacSize ei mene yli
+				else
 				{
-					items[i].Quantity += currentItem.Quantity; // lisää itemin stakkiin määrä
-					currentItem.Quantity = 0;
-					UpdateItem(items[i], i);
+					items[i].Quantity += currentItem.Quantity;
+					reflowPanels();
+					return;
 				}
 			}
 		}
-		if (currentItem.Quantity > 0) //itemin ylijäämä
+
+		if (currentItem.Quantity > currentItem.StackSize)
 		{
-			if (currentItem.Quantity <= currentItem.StackSize) //jos itemin ylijäämä on vähemmän kuin stackSize
-			{
-				AddItemToList(currentItem); // lisää ylijäämä seuraavaan slottiin
-				UpdateItem(currentItem, GetNextEmptySlot());
-			}
-			else // jos itemin ylijäämä on enemmän kuin stackSize
-			{
-				Item tempItem = currentItem.Copy();
-				tempItem.Quantity = currentItem.StackSize;
-				AddItemToList(tempItem);
-				UpdateItem(tempItem, GetNextEmptySlot());
-				currentItem.Quantity -= currentItem.StackSize;
-				Add(currentItem);
-			}
+			Item copyItem = currentItem.Copy();
+			copyItem.Quantity = GetExcess(currentItem.StackSize, currentItem.Quantity);
+			currentItem.Quantity = currentItem.StackSize;
+			GD.Print("Adding excess of excess " + copyItem.Quantity);
+			Add(copyItem);
 		}
+		GD.Print("Adding excess " + currentItem.Quantity);
+		AddItemToList(currentItem);
+		reflowPanels();

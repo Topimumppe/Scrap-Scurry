@@ -3,7 +3,8 @@ using System;
 
 public partial class Global : Node
 {
-	Node inventory = ResourceLoader.Load<PackedScene>("res://scenes/inventory.tscn").Instantiate();
+	Node inventory = ResourceLoader.Load<PackedScene>("res://scenes/player_inventory.tscn").Instantiate();
+	
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

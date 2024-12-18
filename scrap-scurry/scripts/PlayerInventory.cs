@@ -54,7 +54,7 @@ public partial class PlayerInventory : Control
 		panels.Add(panel8);
 		panels.Add(panel9);
 
-		for (int i = 0; i < panels.Count - 1; i++)
+		for (int i = 0; i < panels.Count; i++)
 		{
 			items.Add(null);
 		}
@@ -133,7 +133,6 @@ public partial class PlayerInventory : Control
 
 	static int GetExcess(int stackSize, int ItemQuantity)
 	{
-		GD.Print(stackSize + " - " + ItemQuantity);
 		int excess = stackSize - ItemQuantity;
 		return Math.Abs(excess);
 	}
@@ -157,7 +156,6 @@ public partial class PlayerInventory : Control
 		}
 
 		Item currentItem = item.Copy();
-		GD.Print("Adding " + currentItem.Quantity + " items of " + currentItem.ID);
 		for (int i = 0; i < items.Count; i++)
 		{
 			if (items[i] == null)
@@ -172,7 +170,6 @@ public partial class PlayerInventory : Control
 				{
 					int currentItemsSum = items[i].Quantity + currentItem.Quantity;
 					currentItem.Quantity = GetExcess(items[i].StackSize, currentItemsSum);
-					GD.Print("Currentitem quantity is " + currentItem.Quantity);
 					items[i].Quantity = items[i].StackSize;
 					break;
 				}
@@ -193,7 +190,6 @@ public partial class PlayerInventory : Control
 			GD.Print("Adding excess of excess " + copyItem.Quantity);
 			Add(copyItem);
 		}
-		GD.Print("Adding excess " + currentItem.Quantity);
 		AddItemToList(currentItem);
 		reflowPanels();
 	}
@@ -267,6 +263,11 @@ public partial class PlayerInventory : Control
 			}
 			else
 			{
+				if (items[i].Quantity < items[i].StackSize)
+				{
+					isFull = false;
+					break;
+				}
 				isFull = true;
 			}
 		}
@@ -279,6 +280,10 @@ public partial class PlayerInventory : Control
 			Item currentItem = item.Copy();
 			for (int i = 0; i < items.Count; i++)
 			{
+				if (items[i] == null)
+				{
+					continue;
+				}
 				if (items[i].ID == currentItem.ID)
 				{
 					if (items[i].Quantity - currentItem.Quantity < 0)
@@ -299,7 +304,11 @@ public partial class PlayerInventory : Control
 					break;
 				}
 			}
-			items.RemoveAll(x => x.Quantity <= 0);
+			List<Item> currentItems = items.Where(x => x != null && x.Quantity <= 0).ToList();
+			foreach (Item i in currentItems)
+			{
+				items[items.IndexOf(i)] = null;
+			}
 			if (currentItem.Quantity > 0)
 			{
 				Remove(currentItem);
@@ -336,28 +345,38 @@ public partial class PlayerInventory : Control
 
 	public bool canAfford(Item item)
 	{
-		List<Item> currentItems = items.Where(x => x.ID == item.ID).ToList();
+		List<Item> currentItems = items.Where(x => x != null && x.ID == item.ID).ToList();
 		int i = 0;
 		foreach (var item1 in currentItems)
 		{
 			i += item1.Quantity;
 		}
-		if (item.Quantity < i)
+		if (item.Quantity <= i)
 		{
 			return true;
 		}
+		GD.Print("Cannot afford");
 		return false;
 	}
 	public void _on_add_button_button_down()
 	{
-		AddToInventory(ResourceLoader.Load<Item>("res://scenes/items/TestItem.tres"));
+		AddToInventory(ResourceLoader.Load<Item>("res://scenes/items/Stick_Item.tres"));
 	}
 
 	public void _on_delete_button_button_down()
 	{
-		Remove(ResourceLoader.Load<Item>("res://scenes/items/TestItem.tres"));
+		Remove(ResourceLoader.Load<Item>("res://scenes/items/Stick_Item.tres"));
 	}
 
+	public void _on_add_button_2_button_down()
+	{
+		AddToInventory(ResourceLoader.Load<Item>("res://scenes/items/Stone_Item.tres"));
+	}
+
+	public void _on_delete_button_2_button_down()
+	{
+		Remove(ResourceLoader.Load<Item>("res://scenes/items/Stone_Item.tres"));
+	}
 	public void _on_mouse_area_2d_area_entered(Area2D area)
 	{
 		Control slot = area.GetParent<Control>();

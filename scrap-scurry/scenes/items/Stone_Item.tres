@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ccsbr5vnewlpn"]
+
+[ext_resource type="Texture2D" uid="uid://bn66pwwqvcn26" path="res://assets/items/stone16x16.png" id="1_shqg4"]
+[ext_resource type="Script" path="res://scripts/Item.cs" id="2_bk1vs"]
+
+[resource]
+script = ExtResource("2_bk1vs")
+ID = 2
+Name = "Stone"
+ResourcePath = ""
+Icon = ExtResource("1_shqg4")
+Quantity = 6
+StackSize = 10
+IsStackable = true
