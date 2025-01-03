@@ -6,6 +6,8 @@ using System.Linq;
 
 public partial class PlayerInventory : Control
 {
+	public static PlayerInventory Instance { get; private set; }
+	Node DropDownMenu;  // = ResourceLoader.Load<PackedScene>("res://scenes/item_dropdown_menu.tscn").Instantiate();
 	private GridContainer gridContainer;
 	private Panel panel1;
 	private Panel panel2;
@@ -23,11 +25,13 @@ public partial class PlayerInventory : Control
 	private Item inventoryItem;
 	private Panel HoverOverPanel { get; set; }
 	private Item GrabbedItem { get; set; }
+	public Item LastInteractedItem { get; set; }
 	private bool itemIsGrabbed;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		Instance = this;
 		gridContainer = GetNode<GridContainer>("GridContainer");
 		populatePanels();
 	}
@@ -78,7 +82,7 @@ public partial class PlayerInventory : Control
 				panelIcon.Texture = GrabbedItem.Icon;
 				panel.Show();
 			}
-			if (Input.IsActionJustReleased("Throw"))
+			if (Input.IsActionJustReleased("Throw") && itemIsGrabbed == true)
 			{
 				itemIsGrabbed = false;
 				Panel panel = GetNode<Area2D>("MouseArea2D").GetNode<Panel>("ExamplePanel");
@@ -94,6 +98,12 @@ public partial class PlayerInventory : Control
 					swapPanels(HoverOverPanel, GrabbedItem);
 					GrabbedItem = null;
 				}
+			}
+			if (Input.IsActionJustPressed("RightClick") && items.ElementAtOrDefault(HoverOverPanel.GetIndex()) != null)
+			{
+				LastInteractedItem = items.ElementAtOrDefault(HoverOverPanel.GetIndex());
+				GD.Print("Last interacted item: " + LastInteractedItem.Name);
+				ToggleDropdownMenu();
 			}
 		}
 	}
@@ -388,4 +398,37 @@ public partial class PlayerInventory : Control
 
 	public void _on_mouse_area_2d_area_exited(Area2D area) => HoverOverPanel = null;
 
+	public void ToggleDropdownMenu()
+	{
+		if (!is_menu_open)
+		{
+			OpenMenu();
+		}
+		else
+		{
+			CloseMenu();
+		}
+	}
+	bool is_menu_open = false;
+
+	public void OpenMenu()
+	{
+		if (!is_menu_open)
+		{
+			DropDownMenu = ResourceLoader.Load<PackedScene>("res://scenes/item_dropdown_menu.tscn").Instantiate();
+			GetTree().Root.AddChild(DropDownMenu);
+			is_menu_open = true;
+		}
+	}
+
+	public void CloseMenu()
+	{
+		if (is_menu_open)
+		{
+			LastInteractedItem = null;
+			//GetTree().Root.RemoveChild(DropDownMenu);
+			DropDownMenu.QueueFree();
+			is_menu_open = false;
+		}
+	}
 }
